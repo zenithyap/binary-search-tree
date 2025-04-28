@@ -25,7 +25,9 @@ class Node {
         return this._right;
     }
 
-    set right() {
+    set right(rightNode) {
         this._right = rightNode;
     }
 }
+
+export default Node;
