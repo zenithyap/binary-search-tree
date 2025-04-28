@@ -42,6 +42,21 @@ class Tree {
         return node;
     }
 
+    insert(value, root=this.root) {
+        if (root === null) {
+            return new Node(value);
+        }
+
+        const rootData = root.data;
+        if (value < rootData) {
+            root.left = this.insert(value, root.left);
+        } else if (value > rootData) {
+            root.right = this.insert(value, root.right);
+        }
+
+        return root;
+    }
+
     prettyPrint(node=this.root, prefix = "", isLeft = true) {
         if (node === null) {
           return;
