@@ -1,6 +1,8 @@
 import Node from "./node.js"; 
 class Tree {
-    root;
+    constructor(array) {
+        this.root = this.buildTree(array);
+    }
 
     buildTree(array) {
         const processedArray = this.#sortAndRemoveDuplicate(array);
@@ -39,6 +41,19 @@ class Tree {
 
         return node;
     }
+
+    prettyPrint(node=this.root, prefix = "", isLeft = true) {
+        if (node === null) {
+          return;
+        }
+        if (node.right !== null) {
+          this.prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
+        }
+        console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
+        if (node.left !== null) {
+          this.prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
+        }
+    };
 }
 
 export default Tree;
