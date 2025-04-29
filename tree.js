@@ -57,6 +57,42 @@ class Tree {
         return root;
     }
 
+    delete(value, root=this.root) {
+        if (root === null) {
+            return root;
+        }
+        
+        const rootData = root.data;
+        if (value < rootData) {
+            root.left = this.delete(value, root.left);
+        } else if (value > rootData) {
+            root.right = this.delete(value, root.right);
+        } else {
+            if (root.left === null) {
+                return root.right;
+            }
+
+            if (root.right === null) {
+                return root.left;
+            }
+
+            const successor = this.#getSuccessor(root);
+            root.data = successor.data;
+            root.right = this.delete(successor.data, root.right);
+        }
+
+        return root;
+    }
+
+    #getSuccessor(root) {
+        root = root.right;
+        while (root !== null && root.left !== null) {
+            root = root.left;
+        }
+
+        return root;
+    }
+
     prettyPrint(node=this.root, prefix = "", isLeft = true) {
         if (node === null) {
           return;
