@@ -9,3 +9,5 @@ tree.delete(8)
 tree.delete(23)
 tree.delete(22)
 tree.prettyPrint();
+
+console.log(tree.find(1))

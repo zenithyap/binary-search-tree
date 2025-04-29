@@ -93,6 +93,21 @@ class Tree {
         return root;
     }
 
+    find(value, root=this.root) {
+        if (root === null) {
+            return null;
+        }
+
+        const rootData = root.data;
+        if (value < rootData) {
+            return this.find(value, root.left);
+        } else if (value > rootData) {
+            return this.find(value, root.right);
+        } else {
+            return root;
+        }
+    }
+
     prettyPrint(node=this.root, prefix = "", isLeft = true) {
         if (node === null) {
           return;
