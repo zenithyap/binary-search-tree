@@ -160,9 +160,11 @@ class Tree {
         const root = this.find(value);
         function heightRec(root) {
             if (root === null) {
-                return -1;
-            } 
-
+                return null;
+            } if (!root.left && !root.right) {
+                return 0;
+            }
+            
             return 1 + Math.max(heightRec(root.left), heightRec(root.right));
         }
 
