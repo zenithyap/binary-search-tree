@@ -120,6 +120,42 @@ class Tree {
         }
     }
 
+    inorder(callback, root=this.root) {
+        if (root === null) {
+            return;
+        }
+
+        this.inorder(callback, root.left);
+        callback(root)
+        this.inorder(callback, root.right);
+
+        return root;
+    }
+
+    preOrder(callback, root=this.root) {
+        if (root === null) {
+            return;
+        }
+
+        callback(root);
+        this.preOrder(callback, root.left);
+        this.preOrder(callback, root.right);
+
+        return root;
+    }
+
+    postOrder(callback, root=this.root) {
+        if (root === null) {
+            return;
+        }
+
+        this.postOrder(callback, root.left);
+        this.postOrder(callback, root.right);
+        callback(root);
+
+        return root;
+    }
+
     prettyPrint(node=this.root, prefix = "", isLeft = true) {
         if (node === null) {
           return;

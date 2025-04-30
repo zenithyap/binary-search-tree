@@ -10,11 +10,17 @@ tree.delete(23)
 tree.delete(22)
 tree.prettyPrint();
 
-console.log(tree.find(1))
+// console.log(tree.find(1))
 
 const addOne = (node) => {
-    node.data *= 2;
+    node.data += 1;
 }
 
-tree.levelOrder(addOne);
+// tree.levelOrder(addOne);
+tree.inorder(addOne)
+tree.prettyPrint();
+
+tree.preOrder(addOne);
+tree.prettyPrint();
+tree.postOrder(addOne);
 tree.prettyPrint();
