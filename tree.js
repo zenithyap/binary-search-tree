@@ -156,6 +156,19 @@ class Tree {
         return root;
     }
 
+    height(value) {
+        const root = this.find(value);
+        function heightRec(root) {
+            if (root === null) {
+                return -1;
+            } 
+
+            return 1 + Math.max(heightRec(root.left), heightRec(root.right));
+        }
+
+        return heightRec(root);
+    }
+
     prettyPrint(node=this.root, prefix = "", isLeft = true) {
         if (node === null) {
           return;

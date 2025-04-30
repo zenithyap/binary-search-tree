@@ -24,3 +24,7 @@ tree.preOrder(addOne);
 tree.prettyPrint();
 tree.postOrder(addOne);
 tree.prettyPrint();
+
+console.log(tree.height(6348));
+console.log(tree.height(12));
+console.log(tree.height(7));
