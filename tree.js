@@ -158,17 +158,17 @@ class Tree {
 
     height(value) {
         const root = this.find(value);
-        function heightRec(root) {
-            if (root === null) {
-                return null;
-            } if (!root.left && !root.right) {
-                return 0;
-            }
-            
-            return 1 + Math.max(heightRec(root.left), heightRec(root.right));
-        }
+        if (root === null) return null;
 
-        return heightRec(root);
+        return this.#heightRec(root);
+    }
+
+    #heightRec(root) {
+        if (root === null) {
+            return -1;
+        }
+        
+        return 1 + Math.max(this.#heightRec(root.left), this.#heightRec(root.right));
     }
 
     depth(value, root=this.root, curDepth=0) {
@@ -184,6 +184,25 @@ class Tree {
         } else {
             return curDepth;
         }
+    }
+
+    isBalanced() {
+        return this.isBalancedRec() !== -1;
+    }
+
+    isBalancedRec(root=this.root) {
+        if (root === null) {
+            return 0;
+        }
+
+        const left = this.isBalancedRec(root.left);
+        const right = this.isBalancedRec(root.right);
+
+        if (left === -1 || right === -1 || Math.abs(left - right) > 1) {
+            return -1;
+        }
+        
+        return 1 + Math.max(left, right);
     }
 
     prettyPrint(node=this.root, prefix = "", isLeft = true) {
