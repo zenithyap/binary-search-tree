@@ -11,3 +11,10 @@ tree.delete(22)
 tree.prettyPrint();
 
 console.log(tree.find(1))
+
+const addOne = (node) => {
+    node.data *= 2;
+}
+
+tree.levelOrder(addOne);
+tree.prettyPrint();
