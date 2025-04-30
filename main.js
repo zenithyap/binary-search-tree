@@ -28,3 +28,9 @@ tree.prettyPrint();
 console.log(tree.height(6348));
 console.log(tree.height(12));
 console.log(tree.height(7));
+console.log(tree.height("200"))
+
+console.log(tree.depth(6348));
+console.log(tree.depth(12));
+console.log(tree.depth(7));
+console.log(tree.depth("200"))

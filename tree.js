@@ -169,6 +169,21 @@ class Tree {
         return heightRec(root);
     }
 
+    depth(value, root=this.root, curDepth=0) {
+        if (root === null) {
+            return root;
+        }
+
+        const rootData = root.data;
+        if (value < rootData) {
+            return this.depth(value, root.left, curDepth+1);
+        } else if (value > rootData) {
+            return this.depth(value, root.right, curDepth+1);
+        } else {
+            return curDepth;
+        }
+    }
+
     prettyPrint(node=this.root, prefix = "", isLeft = true) {
         if (node === null) {
           return;
