@@ -120,14 +120,14 @@ class Tree {
         }
     }
 
-    inorder(callback, root=this.root) {
+    inOrder(callback, root=this.root) {
         if (root === null) {
             return;
         }
 
-        this.inorder(callback, root.left);
+        this.inOrder(callback, root.left);
         callback(root)
-        this.inorder(callback, root.right);
+        this.inOrder(callback, root.right);
 
         return root;
     }
@@ -203,6 +203,13 @@ class Tree {
         }
         
         return 1 + Math.max(left, right);
+    }
+
+    rebalance() {
+        const arr = [];
+
+        this.inOrder((node) => arr.push(node.data));
+        this.root = this.buildTree(arr);
     }
 
     prettyPrint(node=this.root, prefix = "", isLeft = true) {
